@@ -2315,7 +2315,7 @@
     "has_transcript": false,
     "description": "",
     "transcript_excerpt": "",
-    "talk": false,
+    "talk": true,
     "summary": ""
   },
   {
@@ -3228,7 +3228,8 @@
     "course": "",
     "tags": [
       "大型/産業機",
-      "自律/ミッション"
+      "自律/ミッション",
+      "コプター"
     ],
     "has_transcript": false,
     "description": "",

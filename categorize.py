@@ -190,10 +190,11 @@ def default_copter(title: str, tags: list[str], fulltext: str) -> list[str]:
 
 
 def load_overrides() -> dict:
-    """手動補正。{ "<videoId>": {"remove": [...], "add": [...]} } 形式。
+    """手動補正。{ "<videoId>": {"remove": [...], "add": [...], "talk": true|false} } 形式。
 
     キーワード判定では拾えない誤タグ(字幕内の願望・雑談的言及など)を
     動画単位で除去/追加する。自動判定の後に適用される。
+    "talk" を指定すると省略対象フラグを手動で上書きできる。
     """
     if OVERRIDES.exists():
         return json.loads(OVERRIDES.read_text(encoding="utf-8"))
@@ -241,7 +242,8 @@ def main() -> None:
             "has_transcript": bool(tr),
             "description": clean_description(desc),
             "transcript_excerpt": excerpt(tr),
-            "talk": is_talk(title),  # トーク系(ウェビナー/インタビュー等)= 既定で検索除外
+            # トーク系(ウェビナー/インタビュー等)= 既定で検索除外。overridesで手動上書き可
+            "talk": overrides.get(vid, {}).get("talk", is_talk(title)),
             "summary": "",  # 後でAI要約を入れる枠
         })
 
