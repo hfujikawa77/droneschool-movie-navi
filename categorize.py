@@ -23,19 +23,24 @@ TAG_RULES: dict[str, list[str]] = {
     # 「ドローン/drone」は全動画に出るほど汎用なので除外し、機体固有語のみ
     "コプター": ["コプター", "マルチコプター", "クアッド", "quad", "hexa", "ヘキサ",
               "octo", "オクト", "copter", "arducopter", "クアッドコプター",
-              "4発", "6発", "8発", "プロペラ機"],
+              "4発", "6発", "8発", "プロペラ機",
+              # 代表的なマルチコプター用フレーム名
+              "f550", "f450", "s500", "x500", "tarot"],
     "ローバー": ["ローバー", "rover", "ardurover", "走行", "クローラ", "無人車"],
     "ボート": ["ボート", "boat", "水上", "船", "asv", "usv"],
     "プレーン": ["プレーン", "plane", "固定翼", "arduplane", "vtol", "テールシッター"],
     "ヘリ": ["ヘリ", "helicopter", "traditional heli"],
     "水中機": ["ardusub", "水中", "rov", "submarine", "潜水"],
     # --- チャレンジ種別 ---
-    "機体製作(ハード)": ["機体製作", "自作", "製作", "組み立て", "組立", "フレーム",
-                   "モーター", "esc", "はんだ", "配線", "hardware", "ハード",
-                   "3dプリント", "基板"],
+    "機体製作(ハード)": ["機体製作", "自作", "製作", "組み立て", "組立", "組み上げ",
+                   "組み上", "初組み", "フレーム", "モーター", "esc", "はんだ",
+                   "配線", "hardware", "ハード", "3dプリント", "基板"],
     "プログラムチャレンジ": ["プログラム", "program", "コード", "code", "スクリプト",
                      "script", "python", "lua", "スクリプティング", "mavlink",
-                     "pymavlink", "dronekit", "mavproxy", "アルゴリズム"],
+                     "pymavlink", "dronekit", "mavproxy", "アルゴリズム",
+                     # フライトモード(自作・新規)はプログラムチャレンジ
+                     "フライトモード", "flight mode", "flightmode", "飛行モード",
+                     "カスタムモード", "custom mode"],
     # --- テーマ ---
     "カメラ系": ["カメラ", "camera", "映像", "gimbal", "ジンバル", "画像", "vision",
              "opencv", "物体検出", "detection", "認識", "ストリーミング",
@@ -81,17 +86,32 @@ RE_COURse = re.compile(r"コース\s*([０-９0-9])")
 Z2H = str.maketrans("０１２３４５６７８９", "0123456789")
 
 
+def load_excluded() -> set[str]:
+    """exclude.txt の対象外動画ID(ドローンワイン/ドローン米プロジェクト等)。"""
+    ids = set()
+    p = HERE / "exclude.txt"
+    if p.exists():
+        for line in p.read_text(encoding="utf-8").splitlines():
+            vid = line.split("#", 1)[0].strip()
+            if vid:
+                ids.add(vid)
+    return ids
+
+
 def load_meta() -> list[dict]:
     rows = []
     if not META.exists():
         return rows
+    excluded = load_excluded()
     for line in META.read_text(encoding="utf-8").splitlines():
         line = line.strip()
         if line.startswith("{"):
             try:
-                rows.append(json.loads(line))
+                d = json.loads(line)
             except json.JSONDecodeError:
-                pass
+                continue
+            if d.get("id") not in excluded:
+                rows.append(d)
     return rows
 
 
@@ -116,6 +136,25 @@ def tag(title_desc: str, fulltext: str) -> list[str]:
         if any(kw.lower() in hay for kw in kws):
             hits.append(name)
     return hits
+
+
+# --- 既定コプター判定 ---
+# 飛行/フライトはコプター・プレーン・ヘリのいずれもあり得るため、飛行=即コプターにはしない。
+# 実機(製作/飛行)動画で他の機体種類が特定できない場合のみ、コプターを既定付与する。
+OTHER_VEHICLES = {"ローバー", "ボート", "プレーン", "ヘリ", "水中機"}
+FLIGHT_WORDS = ["フライト", "飛行", "ホバリング", "ホバ", "離陸", "空撮", "飛ばし", "飛ばす", "旋回"]
+INTERVIEW_MARKERS = ["インタビュー", "ウェビナー", "webinar", "zoom"]  # 実機動画でないので除外
+
+
+def default_copter(title: str, tags: list[str], fulltext: str) -> list[str]:
+    if "コプター" in tags or any(v in tags for v in OTHER_VEHICLES):
+        return tags
+    if any(m in title.lower() for m in INTERVIEW_MARKERS):
+        return tags  # インタビュー/ウェビナーは対象外
+    ft = fulltext.lower()
+    if "機体製作(ハード)" in tags or any(w in ft for w in FLIGHT_WORDS):
+        return ["コプター"] + tags  # 機体種類なので先頭に
+    return tags
 
 
 def load_overrides() -> dict:
@@ -149,7 +188,9 @@ def main() -> None:
         title = d.get("title") or ""
         desc = d.get("description") or ""
         tr = transcript_for(vid)
-        tags = tag("\n".join([title, desc]), "\n".join([title, desc, tr]))
+        fulltext = "\n".join([title, desc, tr])
+        tags = tag("\n".join([title, desc]), fulltext)
+        tags = default_copter(title, tags, fulltext)
         tags = apply_overrides(vid, tags, overrides)
 
         period = RE_PERIOD.search(title) or RE_PERIOD.search(desc)
