@@ -47,12 +47,12 @@ upload_date	period	course	tags	title	url	views
 20250808	11		Web系|非GPS|自律/ミッション|障害物回避|養成塾	ドローンエンジニア養成塾　１１期KickOff　DEMO1	https://www.youtube.com/watch?v=-JuY289mrx4	57
 20250808	11		コプター|カメラ系|大型/産業機|自律/ミッション|障害物回避|農業|測量/点検|養成塾	ドローンエンジニア養成塾第１１期KickOff DEMO2	https://www.youtube.com/watch?v=jo7q4XvvV18	20
 20250808	11		自律/ミッション|養成塾	ドローンエンジニア養成塾第１１期KickOff　DEMO3	https://www.youtube.com/watch?v=6IUYCMpducY	42
-20250808	11		コプター|プログラムチャレンジ|カメラ系|Web系|コンパニオン|養成塾	ドローンエンジニア養成塾第１１期KickOff　DEMO4	https://www.youtube.com/watch?v=VKxM1yZ5zus	45
+20250808	11		コプター|プログラムチャレンジ|カメラ系|Web系|コンパニオン|マイクロ機|養成塾	ドローンエンジニア養成塾第１１期KickOff　DEMO4	https://www.youtube.com/watch?v=VKxM1yZ5zus	45
 20250808	11		カメラ系|養成塾	ドローンエンジニア養成塾第１１期KickOff  DEMO5	https://www.youtube.com/watch?v=mLWH2GMk1R4	46
 20250808	11		コプター|プログラムチャレンジ|カメラ系|養成塾	ドローンエンジニア養成塾第１１期KickOff　DEMO6	https://www.youtube.com/watch?v=MAowG9F7-dI	72
 20250808	11		プログラムチャレンジ|カメラ系|Web系|コンパニオン|自律/ミッション|障害物回避|養成塾	ドローンエンジニア養成塾第１１期KickOff　DEMO7	https://www.youtube.com/watch?v=5xVjMj4ydQM	46
-20250808			コプター|機体製作(ハード)|自律/ミッション	１・太田さん　自作４インチミニコプター　自動ミッション航行　1/2	https://www.youtube.com/watch?v=sa3cfuK8eLA	34
-20250808			コプター|機体製作(ハード)|自律/ミッション	１・太田さん　自作４インチミニコプター　自動ミッション航行　2/2	https://www.youtube.com/watch?v=vsc7kUg0ZWI	27
+20250808			コプター|機体製作(ハード)|マイクロ機|自律/ミッション	１・太田さん　自作４インチミニコプター　自動ミッション航行　1/2	https://www.youtube.com/watch?v=sa3cfuK8eLA	34
+20250808			コプター|機体製作(ハード)|マイクロ機|自律/ミッション	１・太田さん　自作４インチミニコプター　自動ミッション航行　2/2	https://www.youtube.com/watch?v=vsc7kUg0ZWI	27
 20250808			コプター|機体製作(ハード)	2・川崎さん　オリジナルDIY＋CC　初航行　次に向けていざ！	https://www.youtube.com/watch?v=8XYaP_0Xmzc	40
 20250808		3	コプター|プログラムチャレンジ|コンパニオン|養成塾	３・山崎さん　一点継続指向航行（コース３チームNewFlightMode）1/2	https://www.youtube.com/watch?v=HB2v_elGp-8	24
 20250808		3	コプター|プログラムチャレンジ|カメラ系|養成塾	３・山崎さん　一点継続指向航行（コース３チームNewFlightMode）２/2	https://www.youtube.com/watch?v=PELiwxya3x8	36
@@ -121,9 +121,9 @@ upload_date	period	course	tags	title	url	views
 20250808			コプター|プログラムチャレンジ	2. 環境monitoring solution (fc w/sensor to python program on CC) by DIY mini-copter By 我田先生（2/4)	https://www.youtube.com/watch?v=gcRuKALQqhM	28
 20250808			コプター|プログラムチャレンジ	2. 環境monitoring solution (fc w/sensor to python program on CC) by DIY mini-copter By 我田先生（3/4)	https://www.youtube.com/watch?v=MFAljkksIak	12
 20250808			コプター|プログラムチャレンジ|Web系	2. 環境monitoring solution (fc w/sensor to python program on CC) by DIY mini-copter By 我田先生（4/4)	https://www.youtube.com/watch?v=1LsiewyXpok	7
-20250808			コプター|機体製作(ハード)|カメラ系	3. 有線給電minicopter, 350v downed to 24v via converter → log analysis for trouble shooting By 太田さん(1/3)	https://www.youtube.com/watch?v=P3G7FSiQrJA	9
-20250808			コプター	3. 有線給電minicopter, 350v downed to 24v via converter → log analysis for trouble shooting By 太田さん(2/3)	https://www.youtube.com/watch?v=8UFwOfZmJhI	12
-20250808			コプター	3. 有線給電minicopter, 350v downed to 24v via converter → log analysis for trouble shooting By 太田さん(3/3)	https://www.youtube.com/watch?v=O8yHQms_ubk	29
+20250808			コプター|機体製作(ハード)|カメラ系|マイクロ機	3. 有線給電minicopter, 350v downed to 24v via converter → log analysis for trouble shooting By 太田さん(1/3)	https://www.youtube.com/watch?v=P3G7FSiQrJA	9
+20250808			コプター|マイクロ機	3. 有線給電minicopter, 350v downed to 24v via converter → log analysis for trouble shooting By 太田さん(2/3)	https://www.youtube.com/watch?v=8UFwOfZmJhI	12
+20250808			コプター|マイクロ機	3. 有線給電minicopter, 350v downed to 24v via converter → log analysis for trouble shooting By 太田さん(3/3)	https://www.youtube.com/watch?v=O8yHQms_ubk	29
 20250808			コプター|機体製作(ハード)|カメラ系|非GPS	4. stable robustness oct copter for Indoor inspection, and aiming for non GPS auto By 山口さん　(1/3)	https://www.youtube.com/watch?v=0Svqg-yvLUE	16
 20250808			コプター|非GPS	4. stable robustness oct copter for Indoor inspection, and aiming for non GPS auto By 山口さん　(2/3)	https://www.youtube.com/watch?v=wBPsV8g1S4k	17
 20250808			コプター|カメラ系|非GPS|障害物回避	4. stable robustness oct copter for Indoor inspection, and aiming for non GPS auto By 山口さん　(3/3)	https://www.youtube.com/watch?v=gS8y3H-wedk	10
@@ -142,7 +142,7 @@ upload_date	period	course	tags	title	url	views
 20250808			非GPS	10. dead reckoning (fc/imuのみでのnonGPS!?) By Randy 4/4	https://www.youtube.com/watch?v=6SSTENMo8oQ	20
 20250808	13		コプター|養成塾	CUBE ORANGE X500V2　初DIYチャレンジ完　豊住さん1/2	https://www.youtube.com/watch?v=Wdd-ALmp4h0	12
 20250808	13		コプター|養成塾	CUBE ORANGE X500V2　初DIYチャレンジ完　豊住さん2/2	https://www.youtube.com/watch?v=8G_J8FB9_Uo	13
-20250808	13		コプター|養成塾	初DIYでSUB 100g Mini Copterにチャレンジ中　朝日さん	https://www.youtube.com/watch?v=qN3Ho43Bvfk	15
+20250808	13		コプター|マイクロ機|養成塾	初DIYでSUB 100g Mini Copterにチャレンジ中　朝日さん	https://www.youtube.com/watch?v=qN3Ho43Bvfk	15
 20250808	13		コプター|プログラムチャレンジ|自律/ミッション|養成塾	DroneKit Pythonプログラミングチャレンジ　①スマート電池消費表示　②アームしてからの経過時間表示(デモ) @mission planner　吉里さん	https://www.youtube.com/watch?v=Z6irvK5-BpY	45
 20250808	13		ローバー|養成塾	DIYローバーの自動走行　全自動草刈り機を目指し！　塚田さん1/2	https://www.youtube.com/watch?v=gG7Pjddza_o	29
 20250808	13		ローバー|自律/ミッション|養成塾	DIYローバーの自動走行　全自動草刈り機を目指し！　塚田さん2/2	https://www.youtube.com/watch?v=s1VVasYdXDg	7
@@ -227,7 +227,7 @@ upload_date	period	course	tags	title	url	views
 20250808	17		コプター|自律/ミッション|養成塾	ドローンエンジニア養成塾１７期 Day４ フライトエクスペリエンス 　川村先生　1・２	https://www.youtube.com/watch?v=_jg-dzi192w	11
 20250808	17		コプター|養成塾	ドローンエンジニア養成塾１７期 Day４ フライトエクスペリエンス 　川村先生　２・２	https://www.youtube.com/watch?v=m6_Eqq1yLVE	9
 20250808	17		コプター|コンパニオン|養成塾	ドローンエンジニア養成塾１７期 Day４ フライトエクスペリエンス 　塩浜さん 「ドローンショーを北海道で」を夢見て模索格闘中！　1/2	https://www.youtube.com/watch?v=F7_2pF7vODo	6
-20250808			コプター|機体製作(ハード)|カメラ系|Web系|コンパニオン|大型/産業機|障害物回避	Quick （クイック）v 1 0 ArduPilot ミニコプター	https://www.youtube.com/watch?v=b3X9vlyNRLo	400
+20250808			コプター|機体製作(ハード)|カメラ系|Web系|コンパニオン|マイクロ機|大型/産業機|障害物回避	Quick （クイック）v 1 0 ArduPilot ミニコプター	https://www.youtube.com/watch?v=b3X9vlyNRLo	400
 20250808	19		ローバー|機体製作(ハード)|プログラムチャレンジ|カメラ系|Web系|非GPS|自律/ミッション|養成塾	ドローンエンジニア養成塾１９期  RANDY先生 1/2	https://www.youtube.com/watch?v=WKhJPK2SjRs	15
 20250808	19		ローバー|機体製作(ハード)|カメラ系|非GPS|障害物回避|RTK/高精度測位|測量/点検|養成塾	ドローンエンジニア養成塾１９期  太田さん 1/3	https://www.youtube.com/watch?v=a0wmfzzOvzc	6
 20250808	19		コプター|ローバー|水中機|プログラムチャレンジ|Web系|コンパニオン|養成塾	ドローンエンジニア養成塾１９期  我田先生 1/2	https://www.youtube.com/watch?v=PdvvgzbaYvs	7
@@ -275,7 +275,7 @@ upload_date	period	course	tags	title	url	views
 20240708	17		コプター|機体製作(ハード)|プログラムチャレンジ|養成塾	ドローンエンジニア養成塾１７期 Day４ フライトエクスペリエンス 　川崎さん　モーター正常回転”数”チェックプログラム	https://www.youtube.com/watch?v=XRvr8RBxnkU	143
 20240604			コプター|Web系	DOP SUITE™（ドップ スイート）	https://www.youtube.com/watch?v=CmUMMJ9Te7k	128
 20240604				D.O.P. ドローン・オープンプラットフォーム・プロジェクト　2024	https://www.youtube.com/watch?v=qSxLNMIGBsQ	134
-20240527	17		コプター|機体製作(ハード)|カメラ系|コンパニオン|養成塾	ドローンエンジニア養成塾１７期 Day１ 荒川さん DEMO	https://www.youtube.com/watch?v=oewhNtsl1TU	34
+20240527	17		コプター|機体製作(ハード)|カメラ系|コンパニオン|マイクロ機|養成塾	ドローンエンジニア養成塾１７期 Day１ 荒川さん DEMO	https://www.youtube.com/watch?v=oewhNtsl1TU	34
 20240527	17		Web系|養成塾	ドローンエンジニア養成塾１７期 Day１ Randy先生 DEMO	https://www.youtube.com/watch?v=uijEVmGVo8g	100
 20240527	17		ローバー|カメラ系|Web系|コンパニオン|自律/ミッション|RTK/高精度測位|養成塾	ドローンエンジニア養成塾１７期 Day１ 川村先生DEMO	https://www.youtube.com/watch?v=uVZZN_mUrtE	82
 20240527	17		ローバー|機体製作(ハード)|カメラ系|コンパニオン|自律/ミッション|養成塾	ドローンエンジニア養成塾１７期 Day１ 我田先生DEMO 2/2	https://www.youtube.com/watch?v=df1U67Cv69M	54
@@ -303,7 +303,7 @@ upload_date	period	course	tags	title	url	views
 20230801			コプター|プログラムチャレンジ|障害物回避	７・９　DEMO  ４足歩行ロボット（複数サーボのLUA制御） 藤川先生	https://www.youtube.com/watch?v=e9H2T0UXpwA	89
 20230801			プログラムチャレンジ|非GPS	６・９　DEMO  アルコマーカー追従プログラム航行 渋谷先生	https://www.youtube.com/watch?v=P3rOILP86Ww	47
 20230801			プログラムチャレンジ|非GPS	６・９　アルコマーカー追従プログラム航行 渋谷先生	https://www.youtube.com/watch?v=bC6i5_Nfivo	56
-20230801	15		コプター	５・９　DEMO Sub100g Minicopter 土木さん（１５期）	https://www.youtube.com/watch?v=xn8XygjmbCs	29
+20230801	15		コプター|マイクロ機	５・９　DEMO Sub100g Minicopter 土木さん（１５期）	https://www.youtube.com/watch?v=xn8XygjmbCs	29
 20230801	15		コプター|機体製作(ハード)|マイクロ機	５・９　Sub100g Minicopter 土木さん（１５期）	https://www.youtube.com/watch?v=sUtqYxkKyJ4	25
 20230801	10		ヘリ|自律/ミッション	４・９　DEMO　ArduPilotシングルヘリ 初披露 奥野さん（１０期）	https://www.youtube.com/watch?v=LoNzufUeMD4	550
 20230801	10		ヘリ	４・９　前座DEMO？　ArduPilotシングルヘリ 初披露 奥野さん（１０期）	https://www.youtube.com/watch?v=pjaw_e-FDl8	104
@@ -370,7 +370,7 @@ upload_date	period	course	tags	title	url	views
 20210814	11	2	機体製作(ハード)|養成塾	ドローンエンジニア養成塾第11期コース２ 川崎さん インタビュー	https://www.youtube.com/watch?v=n-7MmY5cPEg	48
 20210814	11	3	プログラムチャレンジ|Web系|シミュレータ|養成塾	ドローンエンジニア養成塾第11期 CHURAMARINEチーム　コース３ MVT Presentation	https://www.youtube.com/watch?v=oUVnlmZZMZk	62
 20210814	11	3	機体製作(ハード)|プログラムチャレンジ|シミュレータ|養成塾	ドローンエンジニア養成塾第11期 CHURAMARINEチーム コース３ MVT インタビュー	https://www.youtube.com/watch?v=ynJ0lpUeT00	76
-20210814	11	1	コプター|機体製作(ハード)|カメラ系|Web系|養成塾	ドローンエンジニア養成塾第11期 太田さん コース１ MVP	https://www.youtube.com/watch?v=M2WVP-JoVh4	49
+20210814	11	1	コプター|機体製作(ハード)|カメラ系|Web系|マイクロ機|養成塾	ドローンエンジニア養成塾第11期 太田さん コース１ MVP	https://www.youtube.com/watch?v=M2WVP-JoVh4	49
 20210814	11		機体製作(ハード)|カメラ系|マイクロ機|障害物回避|養成塾	ドローンエンジニア養成塾第11期 太田さん インタビュー	https://www.youtube.com/watch?v=YHYOYUPF43Q	40
 20210814	11		養成塾	ドローンエンジニア養成塾第11期 山崎さん 総合MVP	https://www.youtube.com/watch?v=SGLmsvAxyxw	35
 20210814	11		プログラムチャレンジ|Web系|養成塾	ドローンエンジニア養成塾第11期 山崎さん インタビュー	https://www.youtube.com/watch?v=P-ianRuawrY	31

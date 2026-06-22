@@ -34,9 +34,13 @@ def main() -> None:
     ap.add_argument("--period", help="期(例: 20)")
     ap.add_argument("--course", help="コース(例: 3)")
     ap.add_argument("--list-tags", action="store_true")
+    ap.add_argument("--include-talk", action="store_true",
+                    help="ウェビナー/インタビュー/座談会/MVP/メッセージ も含める(既定は除外)")
     args = ap.parse_args()
 
     rows = load()
+    if not args.include_talk:
+        rows = [r for r in rows if not r.get("talk")]
 
     if args.list_tags:
         c = Counter(t for r in rows for t in r["tags"])
