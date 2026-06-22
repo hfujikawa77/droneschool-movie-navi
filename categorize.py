@@ -127,8 +127,8 @@ def transcript_for(vid: str) -> str:
 RE_URL = re.compile(r"https?://\S+")
 
 # 実機チャレンジではない「トーク系」動画(既定で検索から除外)
-TALK_MARKERS = ["ウェビナー", "webinar", "zoom", "インタビュー", "座談会", "mvp",
-                "メッセージ", "めざせ"]  # 「めざせ!ドローンエンジニアチャンネル」も省略対象
+TALK_MARKERS = ["ウェビナー", "webinar", "zoom", "インタビュー", "interview", "座談会",
+                "mvp", "メッセージ", "めざせ"]  # 「めざせ!ドローンエンジニアチャンネル」も省略対象
 
 
 def is_talk(title: str) -> bool:
