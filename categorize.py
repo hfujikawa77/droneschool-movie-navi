@@ -56,7 +56,9 @@ TAG_RULES: dict[str, list[str]] = {
               "jetson", "ジェットソン", "rpi", "nvidia", "ros", "ros2",
               "オンボード", "linux"],
     # --- 機体サイズ ---
-    "マイクロ機": ["マイクロドローン", "マイクロ機", "whoop", "tiny whoop", "27g", "100g未満", "100g以下"],
+    "マイクロ機": ["マイクロドローン", "マイクロ機", "whoop", "tiny whoop", "27g",
+              "100g未満", "100g以下", "sub100g", "sub 100g", "100グラム未満",
+              "100グラム以下", "minicopter", "mini copter", "ミニコプター"],
     "小型機": ["小型機", "小型ドローン", "ミニドローン", "手のひら", "3インチ", "5インチ", "コンパクト機"],
     "大型/産業機": ["大型機", "産業用", "ペイロード", "重量物", "運搬", "物流", "散布", "農薬"],
     # --- 用途・テーマ(本編から判定) ---
@@ -121,6 +123,14 @@ def transcript_for(vid: str) -> str:
 
 
 RE_URL = re.compile(r"https?://\S+")
+
+# 実機チャレンジではない「トーク系」動画(既定で検索から除外)
+TALK_MARKERS = ["ウェビナー", "webinar", "zoom", "インタビュー", "座談会", "mvp", "メッセージ"]
+
+
+def is_talk(title: str) -> bool:
+    low = title.lower()
+    return any(m in low for m in TALK_MARKERS)
 
 
 def clean_description(desc: str) -> str:
@@ -228,6 +238,7 @@ def main() -> None:
             "has_transcript": bool(tr),
             "description": clean_description(desc),
             "transcript_excerpt": excerpt(tr),
+            "talk": is_talk(title),  # トーク系(ウェビナー/インタビュー等)= 既定で検索除外
             "summary": "",  # 後でAI要約を入れる枠
         })
 
