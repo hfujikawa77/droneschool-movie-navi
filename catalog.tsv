@@ -117,10 +117,10 @@ upload_date	period	course	tags	title	url	views
 20250808	13		コプター|プログラムチャレンジ|自律/ミッション	１・Fast Decent by Randy (1/3)	https://www.youtube.com/watch?v=jV67Q0QBV7s	14
 20250808			コプター	１・Fast Decent by Randy (2/3)	https://www.youtube.com/watch?v=yttRixnhEHk	13
 20250808			コプター	１・Fast Decent by Randy (3/3)	https://www.youtube.com/watch?v=Kj1egUF0Jjk	11
-20250808			コプター|機体製作(ハード)|プログラムチャレンジ|コンパニオン	2. 環境monitoring solution (fc w/sensor to python program on CC) by DIY mini-copter By 我田先生（1/4)	https://www.youtube.com/watch?v=8B-TtH42IAw	10
-20250808			コプター|機体製作(ハード)|プログラムチャレンジ	2. 環境monitoring solution (fc w/sensor to python program on CC) by DIY mini-copter By 我田先生（2/4)	https://www.youtube.com/watch?v=gcRuKALQqhM	28
-20250808			コプター|機体製作(ハード)|プログラムチャレンジ	2. 環境monitoring solution (fc w/sensor to python program on CC) by DIY mini-copter By 我田先生（3/4)	https://www.youtube.com/watch?v=MFAljkksIak	12
-20250808			コプター|機体製作(ハード)|プログラムチャレンジ|Web系	2. 環境monitoring solution (fc w/sensor to python program on CC) by DIY mini-copter By 我田先生（4/4)	https://www.youtube.com/watch?v=1LsiewyXpok	7
+20250808			コプター|機体製作(ハード)|プログラムチャレンジ|コンパニオン|マイクロ機	2. 環境monitoring solution (fc w/sensor to python program on CC) by DIY mini-copter By 我田先生（1/4)	https://www.youtube.com/watch?v=8B-TtH42IAw	10
+20250808			コプター|機体製作(ハード)|プログラムチャレンジ|マイクロ機	2. 環境monitoring solution (fc w/sensor to python program on CC) by DIY mini-copter By 我田先生（2/4)	https://www.youtube.com/watch?v=gcRuKALQqhM	28
+20250808			コプター|機体製作(ハード)|プログラムチャレンジ|マイクロ機	2. 環境monitoring solution (fc w/sensor to python program on CC) by DIY mini-copter By 我田先生（3/4)	https://www.youtube.com/watch?v=MFAljkksIak	12
+20250808			コプター|機体製作(ハード)|プログラムチャレンジ|Web系|マイクロ機	2. 環境monitoring solution (fc w/sensor to python program on CC) by DIY mini-copter By 我田先生（4/4)	https://www.youtube.com/watch?v=1LsiewyXpok	7
 20250808			コプター|機体製作(ハード)|カメラ系|小型機	3. 有線給電minicopter, 350v downed to 24v via converter → log analysis for trouble shooting By 太田さん(1/3)	https://www.youtube.com/watch?v=P3G7FSiQrJA	9
 20250808			コプター|小型機	3. 有線給電minicopter, 350v downed to 24v via converter → log analysis for trouble shooting By 太田さん(2/3)	https://www.youtube.com/watch?v=8UFwOfZmJhI	12
 20250808			コプター|小型機	3. 有線給電minicopter, 350v downed to 24v via converter → log analysis for trouble shooting By 太田さん(3/3)	https://www.youtube.com/watch?v=O8yHQms_ubk	29
@@ -211,8 +211,8 @@ upload_date	period	course	tags	title	url	views
 20250808	16		ローバー|機体製作(ハード)	ドローンエンジニア養成塾１６期　「自作コンセプトローバー」　before     1/3 高山先生	https://www.youtube.com/watch?v=Jhk5tY13gJQ	17
 20250808	16		ローバー|機体製作(ハード)	ドローンエンジニア養成塾１６期　「自作コンセプトローバー」　before     2/3 高山先生	https://www.youtube.com/watch?v=ftXsg424WuA	9
 20250808	16		ローバー|機体製作(ハード)|カメラ系|自律/ミッション	ドローンエンジニア養成塾１６期　「自作コンセプトローバー」　after     3/3 高山先生	https://www.youtube.com/watch?v=lq0om87Fu4A	5
-20250808	16		コプター|コンパニオン|自律/ミッション	ドローンエンジニア養成塾１６期  「目視外航行ドローン.インターネット遠隔管理システムの仕組み」　1/2 我田先生	https://www.youtube.com/watch?v=gUH-z8JXXfA	18
-20250808	16		コプター|Web系|自律/ミッション	ドローンエンジニア養成塾１６期  「目視外航行ドローン.インターネット遠隔管理システムの仕組み」　2/2 我田先生	https://www.youtube.com/watch?v=3wxUyO3zpzs	4
+20250808	16		コンパニオン|自律/ミッション|ローバー	ドローンエンジニア養成塾１６期  「目視外航行ドローン.インターネット遠隔管理システムの仕組み」　1/2 我田先生	https://www.youtube.com/watch?v=gUH-z8JXXfA	18
+20250808	16		Web系|自律/ミッション|ローバー	ドローンエンジニア養成塾１６期  「目視外航行ドローン.インターネット遠隔管理システムの仕組み」　2/2 我田先生	https://www.youtube.com/watch?v=3wxUyO3zpzs	4
 20250808	16		ローバー|機体製作(ハード)|カメラ系|自律/ミッション|TAP-J	ドローンエンジニア養成塾１６期  「JIC2023 TAPJ 駆けつけ救助ローバー」　渋谷先生&川村先生	https://www.youtube.com/watch?v=8aHINlVSAZY	12
 20250808	16		ローバー|機体製作(ハード)|カメラ系	ドローンエンジニア養成塾１６期「RtoS社　新型ローバーのご紹介」	https://www.youtube.com/watch?v=bRePlDotEKo	10
 20250808	16		コプター|プログラムチャレンジ|自律/ミッション	ドローンエンジニア養成塾１６期 「コプター各種フライトモード」　1/2  渋谷先生	https://www.youtube.com/watch?v=ND79xORE5H0	6
