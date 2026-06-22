@@ -139,12 +139,15 @@ TALK_MARKERS = ["ウェビナー", "webinar", "zoom", "インタビュー", "int
                 "決意発表", "成果発表", "周年", "カリキュラム"]  # 発表・告知系も省略
 
 
-def is_talk(title: str) -> bool:
+def is_talk(title: str, desc: str = "") -> bool:
     low = title.lower()
     if any(m in low for m in TALK_MARKERS):
         return True
     # 「コース○紹介」= 講師によるコース案内(番号表記に依存せず判定)
     if "コース" in title and "紹介" in title:
+        return True
+    # 講師プロフィール紹介(説明文で判定)
+    if "講師プロフィール" in desc:
         return True
     return False
 
@@ -263,7 +266,7 @@ def main() -> None:
             "description": clean_description(desc),
             "transcript_excerpt": excerpt(tr),
             # トーク系(ウェビナー/インタビュー等)= 既定で検索除外。overridesで手動上書き可
-            "talk": overrides.get(vid, {}).get("talk", is_talk(title)),
+            "talk": overrides.get(vid, {}).get("talk", is_talk(title, desc)),
             "summary": "",  # 後でAI要約を入れる枠
         })
 
