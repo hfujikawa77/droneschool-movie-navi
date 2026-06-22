@@ -128,7 +128,8 @@ RE_URL = re.compile(r"https?://\S+")
 
 # 実機チャレンジではない「トーク系」動画(既定で検索から除外)
 TALK_MARKERS = ["ウェビナー", "webinar", "zoom", "インタビュー", "interview", "座談会",
-                "mvp", "メッセージ", "めざせ"]  # 「めざせ!ドローンエンジニアチャンネル」も省略対象
+                "mvp", "メッセージ", "めざせ",
+                "apdc", "conference"]  # 会議ダイジェスト等もチャレンジではないので省略
 
 
 def is_talk(title: str) -> bool:
