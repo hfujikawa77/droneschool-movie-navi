@@ -22,7 +22,7 @@ TEMPLATE = """<!DOCTYPE html>
 <style>
   /* ArduPilot 公式サイト(ardupilot.org)と同じ Oxygen。日本語はフォールバック */
   body{font-family:'Oxygen',system-ui,"Hiragino Kaku Gothic ProN",Meiryo,sans-serif;margin:0;background:#f5f6f8;color:#222}
-  header{background:#1a3a5c;color:#fff;padding:16px 20px}
+  header{background:#1a3a5c;color:#fff;padding:16px 20px;position:sticky;top:0;z-index:20;box-shadow:0 2px 8px rgba(0,0,0,.15)}
   header .logo{height:44px;display:block;margin-bottom:10px}
   header h1{margin:0;font-size:18px}
   header .sub{font-size:12px;opacity:.8;margin-top:4px}
