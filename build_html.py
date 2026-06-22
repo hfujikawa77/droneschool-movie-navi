@@ -93,11 +93,14 @@ periodEl.innerHTML='<option value="">すべて</option>'
 periodEl.onchange=render;
 talkEl.onchange=render;
 const toggleEl=document.getElementById('toggle'), panelEl=document.getElementById('panel');
-toggleEl.onclick=()=>{
-  const open=panelEl.classList.toggle('collapsed')===false;
-  toggleEl.setAttribute('aria-expanded',open);
+function setPanel(open){
+  panelEl.classList.toggle('collapsed', !open);
+  toggleEl.setAttribute('aria-expanded', open);
   toggleEl.textContent='絞り込み '+(open?'▴':'▾');
-};
+}
+// PC(幅768px以上)は既定で展開、モバイルは既定で省略
+setPanel(window.matchMedia('(min-width: 768px)').matches);
+toggleEl.onclick=()=>setPanel(panelEl.classList.contains('collapsed'));
 
 function fmtDate(s){return s&&s.length===8 ? s.slice(0,4)+'-'+s.slice(4,6)+'-'+s.slice(6) : s;}
 function render(){

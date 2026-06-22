@@ -141,7 +141,12 @@ TALK_MARKERS = ["ウェビナー", "webinar", "zoom", "インタビュー", "int
 
 def is_talk(title: str) -> bool:
     low = title.lower()
-    return any(m in low for m in TALK_MARKERS)
+    if any(m in low for m in TALK_MARKERS):
+        return True
+    # 「コース○紹介」= 講師によるコース案内(番号表記に依存せず判定)
+    if "コース" in title and "紹介" in title:
+        return True
+    return False
 
 
 def clean_description(desc: str) -> str:
