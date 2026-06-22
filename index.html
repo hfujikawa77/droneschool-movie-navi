@@ -18,7 +18,11 @@
   header h1{margin:0;font-size:18px}
   header .sub{font-size:12px;opacity:.8;margin-top:4px}
   .wrap{max-width:980px;margin:0 auto;padding:16px 20px}
-  #q{width:100%;padding:12px 14px;font-size:16px;border:1px solid #ccc;border-radius:8px;box-sizing:border-box}
+  .searchrow{display:flex;gap:8px;align-items:stretch}
+  #q{flex:1;padding:12px 14px;font-size:16px;border:1px solid #ccc;border-radius:8px;box-sizing:border-box}
+  #toggle{flex:none;padding:0 16px;font-size:14px;border:1px solid #1a3a5c;background:#1a3a5c;color:#fff;border-radius:8px;cursor:pointer;white-space:nowrap}
+  #toggle:hover{background:#24527f}
+  #panel.collapsed{display:none}
   .tags{margin:12px 0;display:flex;flex-wrap:wrap;gap:6px}
   .tag{font-size:12px;padding:5px 10px;border-radius:14px;border:1px solid #bcd;background:#fff;cursor:pointer;user-select:none}
   .tag.on{background:#1a3a5c;color:#fff;border-color:#1a3a5c}
@@ -49,12 +53,17 @@
     <div class="sub">動画 415 件 / 生成日 2026-06-22</div>
   </header>
   <div class="controls"><div class="wrap">
-    <input id="q" placeholder="キーワード検索 (例: 非GPS コプター, ローバー, ラズパイ ...)">
-    <div class="filters">
-      <label>期: <select id="period"></select></label>
-      <label class="chk"><input type="checkbox" id="talk"> ウェビナー/インタビュー/座談会/MVP/メッセージ も含める</label>
+    <div class="searchrow">
+      <input id="q" placeholder="キーワード検索 (例: 非GPS コプター, ローバー, ラズパイ ...)">
+      <button id="toggle" type="button" aria-expanded="false">絞り込み ▾</button>
     </div>
-    <div class="tags" id="tags"></div>
+    <div id="panel" class="collapsed">
+      <div class="filters">
+        <label>期: <select id="period"></select></label>
+        <label class="chk"><input type="checkbox" id="talk"> ウェビナー/インタビュー/座談会/MVP/メッセージ も含める</label>
+      </div>
+      <div class="tags" id="tags"></div>
+    </div>
   </div></div>
 </div>
 <div class="wrap">
@@ -74,6 +83,12 @@ periodEl.innerHTML='<option value="">すべて</option>'
   +PERIODS.map(p=>'<option value="'+p+'">第'+p+'期</option>').join('');
 periodEl.onchange=render;
 talkEl.onchange=render;
+const toggleEl=document.getElementById('toggle'), panelEl=document.getElementById('panel');
+toggleEl.onclick=()=>{
+  const open=panelEl.classList.toggle('collapsed')===false;
+  toggleEl.setAttribute('aria-expanded',open);
+  toggleEl.textContent='絞り込み '+(open?'▴':'▾');
+};
 
 function fmtDate(s){return s&&s.length===8 ? s.slice(0,4)+'-'+s.slice(4,6)+'-'+s.slice(6) : s;}
 function render(){
