@@ -22,7 +22,10 @@ TEMPLATE = """<!DOCTYPE html>
 <style>
   /* ArduPilot 公式サイト(ardupilot.org)と同じ Oxygen。日本語はフォールバック */
   body{font-family:'Oxygen',system-ui,"Hiragino Kaku Gothic ProN",Meiryo,sans-serif;margin:0;background:#f5f6f8;color:#222}
-  header{background:#1a3a5c;color:#fff;padding:16px 20px;position:sticky;top:0;z-index:20;box-shadow:0 2px 8px rgba(0,0,0,.15)}
+  .topbar{position:sticky;top:0;z-index:20}
+  .controls{background:#f5f6f8;box-shadow:0 4px 8px rgba(0,0,0,.12)}
+  .controls .wrap{padding-top:12px;padding-bottom:12px}
+  header{background:#1a3a5c;color:#fff;padding:16px 20px}
   header .logo{height:44px;display:block;margin-bottom:10px}
   header h1{margin:0;font-size:18px}
   header .sub{font-size:12px;opacity:.8;margin-top:4px}
@@ -51,18 +54,22 @@ TEMPLATE = """<!DOCTYPE html>
 </style>
 </head>
 <body>
-<header>
-  <img class="logo" src="assets/ardupilot-logo.png" alt="ArduPilot — Versatile, Trusted, Open">
-  <h1>ドローンエンジニア養成塾 — 過去チャレンジ検索</h1>
-  <div class="sub">動画 __N__ 件 / 生成日 __DATE__</div>
-</header>
+<div class="topbar">
+  <header>
+    <img class="logo" src="assets/ardupilot-logo.png" alt="ArduPilot — Versatile, Trusted, Open">
+    <h1>ドローンエンジニア養成塾 — 過去チャレンジ検索</h1>
+    <div class="sub">動画 __N__ 件 / 生成日 __DATE__</div>
+  </header>
+  <div class="controls"><div class="wrap">
+    <input id="q" placeholder="キーワード検索 (例: 非GPS コプター, ローバー, ラズパイ ...)">
+    <div class="filters">
+      <label>期: <select id="period"></select></label>
+      <label class="chk"><input type="checkbox" id="talk"> ウェビナー/インタビュー/座談会/MVP/メッセージ も含める</label>
+    </div>
+    <div class="tags" id="tags"></div>
+  </div></div>
+</div>
 <div class="wrap">
-  <input id="q" placeholder="キーワード検索 (例: 非GPS コプター, ローバー, ラズパイ ...)">
-  <div class="filters">
-    <label>期: <select id="period"></select></label>
-    <label class="chk"><input type="checkbox" id="talk"> ウェビナー/インタビュー/座談会/MVP/メッセージ も含める</label>
-  </div>
-  <div class="tags" id="tags"></div>
   <div class="count" id="count"></div>
   <div id="results"></div>
 </div>
