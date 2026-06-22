@@ -120,6 +120,25 @@ def transcript_for(vid: str) -> str:
     return p.read_text(encoding="utf-8") if p.exists() else ""
 
 
+RE_URL = re.compile(r"https?://\S+")
+
+
+def clean_description(desc: str) -> str:
+    """表示・検索用に説明文の定型(URL行・ハッシュタグのみの行)を除去する。
+    多くの動画で同一の #ドローンエンジニア 等の定型文は情報量が無いため。"""
+    out = []
+    for line in desc.splitlines():
+        s = RE_URL.sub("", line).strip()
+        if not s:
+            continue
+        # ハッシュタグだけの行(# / ＃ で始まるトークンのみ)を除去
+        toks = s.split()
+        if toks and all(t.startswith("#") or t.startswith("＃") for t in toks):
+            continue
+        out.append(s)
+    return "\n".join(out)
+
+
 def excerpt(tr: str, n: int = 220) -> str:
     """字幕の冒頭を1行プレビュー用に整形(改行→空白、先頭n文字)。"""
     s = " ".join(tr.split())
@@ -207,7 +226,7 @@ def main() -> None:
             "course": course.group(1).translate(Z2H) if course else "",
             "tags": tags,
             "has_transcript": bool(tr),
-            "description": desc,
+            "description": clean_description(desc),
             "transcript_excerpt": excerpt(tr),
             "summary": "",  # 後でAI要約を入れる枠
         })
