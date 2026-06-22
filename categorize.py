@@ -1,0 +1,170 @@
+#!/usr/bin/env python3
+"""metadata.jsonl (+ あれば字幕) を対象に、塾の検索軸でタグ付けする。
+
+検索対象テキスト = タイトル + 説明文 + (transcripts/<id>.txt があれば字幕)
+出力:
+  catalog.tsv  … 1行1動画。タグ列付きの一覧 (表計算/grep 用)
+  catalog.json … 検索ツール (search.py / search.html) が読む構造化データ
+"""
+import json
+import re
+from pathlib import Path
+
+HERE = Path(__file__).resolve().parent
+META = HERE / "metadata.jsonl"
+TRANSCRIPTS = HERE / "transcripts"
+TSV = HERE / "catalog.tsv"
+JSON_OUT = HERE / "catalog.json"
+
+# タグ名 -> 検索キーワード(小文字・部分一致)。日本語/英語/略称を混在で登録。
+TAG_RULES: dict[str, list[str]] = {
+    # --- 機体種類 ---
+    # 「ドローン/drone」は全動画に出るほど汎用なので除外し、機体固有語のみ
+    "コプター": ["コプター", "マルチコプター", "クアッド", "quad", "hexa", "ヘキサ",
+              "octo", "オクト", "copter", "arducopter", "クアッドコプター",
+              "4発", "6発", "8発", "プロペラ機"],
+    "ローバー": ["ローバー", "rover", "ardurover", "走行", "クローラ", "無人車"],
+    "ボート": ["ボート", "boat", "水上", "船", "asv", "usv"],
+    "プレーン": ["プレーン", "plane", "固定翼", "arduplane", "vtol", "テールシッター"],
+    "ヘリ": ["ヘリ", "helicopter", "traditional heli"],
+    "水中機": ["ardusub", "水中", "rov", "submarine", "潜水"],
+    # --- チャレンジ種別 ---
+    "機体製作(ハード)": ["機体製作", "自作", "製作", "組み立て", "組立", "フレーム",
+                   "モーター", "esc", "はんだ", "配線", "hardware", "ハード",
+                   "3dプリント", "基板"],
+    "プログラムチャレンジ": ["プログラム", "program", "コード", "code", "スクリプト",
+                     "script", "python", "lua", "スクリプティング", "mavlink",
+                     "pymavlink", "dronekit", "mavproxy", "アルゴリズム"],
+    # --- テーマ ---
+    "カメラ系": ["カメラ", "camera", "映像", "gimbal", "ジンバル", "画像", "vision",
+             "opencv", "物体検出", "detection", "認識", "ストリーミング",
+             "fpv", "yolo", "セグメンテーション"],
+    "Web系": ["web", "ウェブ", "サーバ", "server", "ブラウザ", "html", "api",
+            "クラウド", "cloud", "ダッシュボード", "node", "javascript",
+            "django", "flask"],
+    "非GPS": ["非gps", "non-gps", "nongps", "gpsなし", "gps無し", "gpsレス",
+            "屋内", "indoor", "slam", "optical flow", "オプティカルフロー",
+            "visual odometry", "vio", "t265", "marker", "マーカー", "april",
+            "ビーコン", "uwb"],
+    "コンパニオン": ["コンパニオン", "companion", "raspberry", "ラズパイ", "ラズベリー",
+              "jetson", "ジェットソン", "rpi", "nvidia", "ros", "ros2",
+              "オンボード", "linux"],
+    # --- 機体サイズ ---
+    "マイクロ機": ["マイクロドローン", "マイクロ機", "whoop", "tiny whoop", "27g", "100g未満", "100g以下"],
+    "小型機": ["小型機", "小型ドローン", "ミニドローン", "手のひら", "3インチ", "5インチ", "コンパクト機"],
+    "大型/産業機": ["大型機", "産業用", "ペイロード", "重量物", "運搬", "物流", "散布", "農薬"],
+    # --- 用途・テーマ(本編から判定) ---
+    "自律/ミッション": ["自律", "ミッション", "waypoint", "ウェイポイント", "自動航行", "オートミッション"],
+    "障害物回避": ["障害物", "回避", "avoidance", "obstacle", "lidar", "ライダー", "深度カメラ"],
+    "シミュレータ": ["sitl", "シミュレーション", "シミュレータ", "gazebo"],
+    "RTK/高精度測位": ["rtk", "gnss"],
+    "農業": ["農薬", "圃場", "水田", "作物", "農業ドローン", "営農"],
+    "測量/点検": ["測量", "点検", "インフラ点検", "オルソ", "マッピング", "3次元計測"],
+    "AI/機械学習": ["機械学習", "ディープラーニング", "ニューラル", "物体検出", "yolo", "生成ai", "学習モデル"],
+    # --- 塾の文脈 ---
+    "養成塾": ["養成塾", "エンジニア養成", "コース", "期生", "インタビュー", "塾生", "卒塾"],
+}
+
+# 機体種類・サイズは「この動画の主題」なので タイトル+説明文 のみで判定する。
+# (字幕まで見ると講師の雑談的言及を拾い過剰タグになるため)
+TITLE_SCOPED = {
+    "コプター", "ローバー", "ボート", "プレーン", "ヘリ", "水中機",
+}
+# サイズ(マイクロ/小型/大型)はタイトルに出にくいが、識別語が固有で誤検出しにくいので
+# 全文(字幕込み)で判定する。
+# それ以外(テーマ・用途・塾文脈)は字幕込みの全文で判定する。
+
+# 「第N期」「コースN」抽出用
+RE_PERIOD = re.compile(r"第?\s*([０-９0-9]{1,2})\s*期")
+RE_COURse = re.compile(r"コース\s*([０-９0-9])")
+Z2H = str.maketrans("０１２３４５６７８９", "0123456789")
+
+
+def load_meta() -> list[dict]:
+    rows = []
+    if not META.exists():
+        return rows
+    for line in META.read_text(encoding="utf-8").splitlines():
+        line = line.strip()
+        if line.startswith("{"):
+            try:
+                rows.append(json.loads(line))
+            except json.JSONDecodeError:
+                pass
+    return rows
+
+
+def transcript_for(vid: str) -> str:
+    p = TRANSCRIPTS / f"{vid}.txt"
+    return p.read_text(encoding="utf-8") if p.exists() else ""
+
+
+def excerpt(tr: str, n: int = 220) -> str:
+    """字幕の冒頭を1行プレビュー用に整形(改行→空白、先頭n文字)。"""
+    s = " ".join(tr.split())
+    return s[:n] + ("…" if len(s) > n else "")
+
+
+def tag(title_desc: str, fulltext: str) -> list[str]:
+    """TITLE_SCOPED のタグは title+desc のみ、他は全文(字幕込み)で判定。"""
+    td = title_desc.lower()
+    ft = fulltext.lower()
+    hits = []
+    for name, kws in TAG_RULES.items():
+        hay = td if name in TITLE_SCOPED else ft
+        if any(kw.lower() in hay for kw in kws):
+            hits.append(name)
+    return hits
+
+
+def main() -> None:
+    rows = load_meta()
+    catalog = []
+    for d in rows:
+        vid = d.get("id", "")
+        title = d.get("title") or ""
+        desc = d.get("description") or ""
+        tr = transcript_for(vid)
+        tags = tag("\n".join([title, desc]), "\n".join([title, desc, tr]))
+
+        period = RE_PERIOD.search(title) or RE_PERIOD.search(desc)
+        course = RE_COURse.search(title) or RE_COURse.search(desc)
+
+        catalog.append({
+            "id": vid,
+            "title": title,
+            "url": d.get("webpage_url") or f"https://www.youtube.com/watch?v={vid}",
+            "upload_date": d.get("upload_date") or "",
+            "duration": d.get("duration") or 0,
+            "view_count": d.get("view_count") or 0,
+            "period": period.group(1).translate(Z2H) if period else "",
+            "course": course.group(1).translate(Z2H) if course else "",
+            "tags": tags,
+            "has_transcript": bool(tr),
+            "description": desc,
+            "transcript_excerpt": excerpt(tr),
+            "summary": "",  # 後でAI要約を入れる枠
+        })
+
+    catalog.sort(key=lambda r: r["upload_date"], reverse=True)
+    JSON_OUT.write_text(json.dumps(catalog, ensure_ascii=False, indent=2), encoding="utf-8")
+
+    with TSV.open("w", encoding="utf-8") as fh:
+        fh.write("upload_date\tperiod\tcourse\ttags\ttitle\turl\tviews\n")
+        for r in catalog:
+            fh.write("\t".join([
+                r["upload_date"], r["period"], r["course"],
+                "|".join(r["tags"]), r["title"], r["url"], str(r["view_count"]),
+            ]) + "\n")
+
+    # 集計
+    from collections import Counter
+    c = Counter(t for r in catalog for t in r["tags"])
+    print(f"videos={len(catalog)}  with_transcript={sum(r['has_transcript'] for r in catalog)}")
+    print("tag counts:")
+    for name in TAG_RULES:
+        print(f"  {name:18} {c.get(name,0)}")
+
+
+if __name__ == "__main__":
+    main()

@@ -1,0 +1,6 @@
+__pycache__/
+*.pyc
+*.out
+*.log
+# 字幕なしマーカー(再実行用の状態ファイル・再生成可能)
+transcripts/*.none
