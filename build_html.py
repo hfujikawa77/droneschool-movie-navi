@@ -16,9 +16,14 @@ TEMPLATE = """<!DOCTYPE html>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>ドローンエンジニア養成塾 過去チャレンジ検索</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oxygen:wght@300;400;700&display=swap" rel="stylesheet">
 <style>
-  body{font-family:system-ui,"Hiragino Kaku Gothic ProN",Meiryo,sans-serif;margin:0;background:#f5f6f8;color:#222}
+  /* ArduPilot 公式サイト(ardupilot.org)と同じ Oxygen。日本語はフォールバック */
+  body{font-family:'Oxygen',system-ui,"Hiragino Kaku Gothic ProN",Meiryo,sans-serif;margin:0;background:#f5f6f8;color:#222}
   header{background:#1a3a5c;color:#fff;padding:16px 20px}
+  header .logo{height:44px;display:block;margin-bottom:10px}
   header h1{margin:0;font-size:18px}
   header .sub{font-size:12px;opacity:.8;margin-top:4px}
   .wrap{max-width:980px;margin:0 auto;padding:16px 20px}
@@ -47,6 +52,7 @@ TEMPLATE = """<!DOCTYPE html>
 </head>
 <body>
 <header>
+  <img class="logo" src="assets/ardupilot-logo.png" alt="ArduPilot — Versatile, Trusted, Open">
   <h1>ドローンエンジニア養成塾 — 過去チャレンジ検索</h1>
   <div class="sub">動画 __N__ 件 / 生成日 __DATE__</div>
 </header>
