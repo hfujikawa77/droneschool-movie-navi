@@ -26,7 +26,8 @@ TAG_RULES: dict[str, list[str]] = {
               "4発", "6発", "8発", "プロペラ機",
               # 代表的なマルチコプター用フレーム名
               "f550", "f450", "s500", "x500", "tarot"],
-    "ローバー": ["ローバー", "rover", "ardurover", "走行", "クローラ", "無人車"],
+    "ローバー": ["ローバー", "rover", "ardurover", "走行", "クローラ", "無人車",
+              "草刈", "自動草刈"],
     "ボート": ["ボート", "boat", "水上", "船", "asv", "usv"],
     "プレーン": ["プレーン", "plane", "固定翼", "arduplane", "vtol", "テールシッター"],
     "ヘリ": ["ヘリ", "helicopter", "traditional heli"],
@@ -59,10 +60,12 @@ TAG_RULES: dict[str, list[str]] = {
               "jetson", "ジェットソン", "rpi", "nvidia", "ros", "ros2",
               "オンボード", "linux"],
     # --- 機体サイズ ---
+    # マイクロ機は sub-100g/whoop 級のみ。「ミニコプター(4インチ等)」は小型機へ。
     "マイクロ機": ["マイクロドローン", "マイクロ機", "whoop", "tiny whoop", "27g",
               "100g未満", "100g以下", "sub100g", "sub 100g", "100グラム未満",
-              "100グラム以下", "minicopter", "mini copter", "ミニコプター"],
-    "小型機": ["小型機", "小型ドローン", "ミニドローン", "手のひら", "3インチ", "5インチ", "コンパクト機"],
+              "100グラム以下"],
+    "小型機": ["小型機", "小型ドローン", "ミニドローン", "手のひら", "3インチ", "4インチ",
+            "5インチ", "コンパクト機", "ミニコプター", "minicopter", "mini copter"],
     "大型/産業機": ["大型機", "産業用", "ペイロード", "重量物", "運搬", "物流", "散布", "農薬"],
     # --- 用途・テーマ(本編から判定) ---
     "自律/ミッション": ["自律", "ミッション", "waypoint", "ウェイポイント", "自動航行", "オートミッション"],
@@ -72,6 +75,8 @@ TAG_RULES: dict[str, list[str]] = {
     "農業": ["農薬", "圃場", "水田", "作物", "農業ドローン", "営農"],
     "測量/点検": ["測量", "点検", "インフラ点検", "オルソ", "マッピング", "3次元計測"],
     "AI/機械学習": ["機械学習", "ディープラーニング", "ニューラル", "物体検出", "yolo", "生成ai", "学習モデル"],
+    # --- プロジェクト/チーム ---
+    "TAP-J": ["tap-j", "tapj", "tap j"],  # 災害救助コンペ(JIC)等に取り組むTAP-Jチーム
     # 「養成塾」はほぼ全動画に付きフィルタとして機能しないため廃止(期は別途ドロップダウンで絞り込み)
 }
 
@@ -79,6 +84,7 @@ TAG_RULES: dict[str, list[str]] = {
 # (字幕まで見ると講師の雑談的言及を拾い過剰タグになるため)
 TITLE_SCOPED = {
     "コプター", "ローバー", "ボート", "プレーン", "ヘリ", "水中機",
+    "TAP-J",  # 字幕の雑談的言及は拾わず、タイトル・説明のみで判定
 }
 # サイズ(マイクロ/小型/大型)はタイトルに出にくいが、識別語が固有で誤検出しにくいので
 # 全文(字幕込み)で判定する。
@@ -129,7 +135,8 @@ RE_URL = re.compile(r"https?://\S+")
 # 実機チャレンジではない「トーク系」動画(既定で検索から除外)
 TALK_MARKERS = ["ウェビナー", "webinar", "zoom", "インタビュー", "interview", "座談会",
                 "mvp", "メッセージ", "めざせ",
-                "apdc", "conference"]  # 会議ダイジェスト等もチャレンジではないので省略
+                "apdc", "conference",
+                "決意発表", "成果発表", "周年", "カリキュラム"]  # 発表・告知系も省略
 
 
 def is_talk(title: str) -> bool:
@@ -175,7 +182,12 @@ def tag(title_desc: str, fulltext: str) -> list[str]:
 # 飛行/フライトはコプター・プレーン・ヘリのいずれもあり得るため、飛行=即コプターにはしない。
 # 実機(製作/飛行)動画で他の機体種類が特定できない場合のみ、コプターを既定付与する。
 OTHER_VEHICLES = {"ローバー", "ボート", "プレーン", "ヘリ", "水中機"}
-FLIGHT_WORDS = ["フライト", "飛行", "ホバリング", "ホバ", "離陸", "空撮", "飛ばし", "飛ばす", "旋回"]
+FLIGHT_WORDS = ["フライト", "飛行", "ホバリング", "ホバ", "離陸", "空撮", "飛ばし", "飛ばす",
+                "飛ん", "飛ぶ", "旋回",
+                # 飛行モード/デモを表す語(=実機コプターの飛行)
+                "loiter", "ロイター", "着陸", "landing", "ドローンショー", "drone show",
+                "descent", "降下", "fast decent", "フリップ", "flip", "throw mode",
+                "crash recovery", "precision land"]
 INTERVIEW_MARKERS = ["インタビュー", "ウェビナー", "webinar", "zoom"]  # 実機動画でないので除外
 
 
@@ -222,8 +234,10 @@ def main() -> None:
         title = d.get("title") or ""
         desc = d.get("description") or ""
         tr = transcript_for(vid)
-        fulltext = "\n".join([title, desc, tr])
-        tags = tag("\n".join([title, desc]), fulltext)
+        # 全角スペースを半角化し連続空白を畳んで一致漏れ(例: "Crash　 Recovery")を防ぐ
+        norm = lambda s: re.sub(r"[ 　]+", " ", s)
+        fulltext = norm("\n".join([title, desc, tr]))
+        tags = tag(norm("\n".join([title, desc])), fulltext)
         tags = default_copter(title, tags, fulltext)
         tags = apply_overrides(vid, tags, overrides)
 
