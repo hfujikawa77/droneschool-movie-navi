@@ -74,7 +74,7 @@ upload_date	period	course	tags	title	url	views
 20250808			プログラムチャレンジ	１５・阿部さん　DroneKitオートプログラム　３度めの正直	https://www.youtube.com/watch?v=P9UaZPRFS2c	21
 20250808			ボート|自律/ミッション	１6・我田先生　ボートオートミッション・・・のはず！？	https://www.youtube.com/watch?v=_WQ7BGJhb2M	38
 20250808			ボート	１７・川村先生　ボートチューニングレッスン	https://www.youtube.com/watch?v=b9eOiQ5ErpA	31
-20250808	12		プログラムチャレンジ|非GPS	ドローンエンジニア養成塾 第１２期キックオフデモ　藤川先生　（四足歩行ロボット＋NonGPS自己位置推定）	https://www.youtube.com/watch?v=j-XFcGr0OoM	24
+20250808	12		プログラムチャレンジ|非GPS|ローバー	ドローンエンジニア養成塾 第１２期キックオフデモ　藤川先生　（四足歩行ロボット＋NonGPS自己位置推定）	https://www.youtube.com/watch?v=j-XFcGr0OoM	24
 20250808	12		ローバー	ドローンエンジニア養成塾 第１２期キックオフデモ　Randy先生　（技適取得済HereLinkによるローバーSカーブナビゲーション）	https://www.youtube.com/watch?v=RBcDvzM9IUo	20
 20250808	12		ローバー|プログラムチャレンジ|Web系|コンパニオン|自律/ミッション	ドローンエンジニア養成塾 第１２期キックオフデモ　我田先生　（CO2濃度＋位置情報のローバー計測クラウドシステム）	https://www.youtube.com/watch?v=vHgM8-kIGa4	29
 20250808	12		コプター|機体製作(ハード)	ドローンエンジニア養成塾 第１２期キックオフデモ　卒業生渋谷さん　（３DプリンターDIY IRIS　改良進化中）	https://www.youtube.com/watch?v=p7b5UKwH4fQ	20
@@ -191,7 +191,7 @@ upload_date	period	course	tags	title	url	views
 20250808	14	1	コプター	ドローンエンジニア養成塾第１４期　コース１　伊藤竜司さんMVP授賞式	https://www.youtube.com/watch?v=9S9KI_Z_xuY	15
 20250808	14	2	コプター|機体製作(ハード)|プログラムチャレンジ|非GPS	ドローンエンジニア養成塾第１４期　コース２　竹田明弘さん MVP	https://www.youtube.com/watch?v=108bXB2ewqU	22
 20250808	14	3	コプター|機体製作(ハード)|プログラムチャレンジ	ドローンエンジニア養成塾第１４期　コース３　一戸英男さん MVP	https://www.youtube.com/watch?v=amdoPO-zvfQ	5
-20250808	15		ローバー|機体製作(ハード)|プログラムチャレンジ|障害物回避	第１５期　Flight Experience  1２・多脚ローバー 　藤川さん	https://www.youtube.com/watch?v=LPDrJQfEfuM	16
+20250808	15		ローバー|機体製作(ハード)|プログラムチャレンジ	第１５期　Flight Experience  1２・多脚ローバー 　藤川さん	https://www.youtube.com/watch?v=LPDrJQfEfuM	16
 20250808	15		非GPS|シミュレータ	第１５期　Flight Experience  1１の１・フリップモード　野村さん	https://www.youtube.com/watch?v=TzHPV55FQu4	10
 20250808	15			第１５期　Flight Experience  1１の２・フリップモード　野村さん	https://www.youtube.com/watch?v=uPLYw4TBRYI	13
 20250808	15		コプター|機体製作(ハード)	第１５期　Flight Experience  1０の１・初組み上げ初フライト　永田さん	https://www.youtube.com/watch?v=dMbL56CGlFg	20
@@ -259,7 +259,7 @@ upload_date	period	course	tags	title	url	views
 20241112	18		プログラムチャレンジ|カメラ系|自律/ミッション	ドローンエンジニア養成塾１８期 Day１ 渋谷先生 DEMO Part1 1.3	https://www.youtube.com/watch?v=yKmgpM7L5cs	27
 20241112	18		コプター|ローバー	ドローンエンジニア養成塾１８期 Day１ Randy先生 DEMO Part1 2.3	https://www.youtube.com/watch?v=VgZEDBw4T9s	75
 20241112	18		コプター|ローバー	ドローンエンジニア養成塾１８期 Day１ Randy先生 DEMO Part1 1.3	https://www.youtube.com/watch?v=vGkQNadH0XU	24
-20241112	18		プログラムチャレンジ|Web系|コンパニオン|障害物回避	ドローンエンジニア養成塾１８期 Day１ 藤川先生 DEMO Part２	https://www.youtube.com/watch?v=gUaEBBq2jqc	54
+20241112	18		プログラムチャレンジ|Web系|コンパニオン|ローバー	ドローンエンジニア養成塾１８期 Day１ 藤川先生 DEMO Part２	https://www.youtube.com/watch?v=gUaEBBq2jqc	54
 20241112	18		コプター|プログラムチャレンジ|自律/ミッション	ドローンエンジニア養成塾１８期 Day１ 村田さんDEMO 1.3	https://www.youtube.com/watch?v=Cl7WMUK9rsE	47
 20241112	18		コプター|機体製作(ハード)|RTK/高精度測位	ドローンエンジニア養成塾１８期 Day１ 太田さんDEMO 3.3	https://www.youtube.com/watch?v=fsqmUtylGKU	43
 20241112	18		コプター|機体製作(ハード)|RTK/高精度測位	ドローンエンジニア養成塾１８期 Day１ 太田さんDEMO 1.3	https://www.youtube.com/watch?v=1SA2xxAc7n4	102
@@ -300,7 +300,7 @@ upload_date	period	course	tags	title	url	views
 20230801			コプター|カメラ系|Web系|大型/産業機	９・９　DEMO前編　DOPHUB活用例 マルチクライアント対応のHDストリーミング　川村先生	https://www.youtube.com/watch?v=7zrW4lqG9Wo	33
 20230801			カメラ系	９・９　DOPHUB活用例 マルチクライアント対応のHDストリーミング　川村先生	https://www.youtube.com/watch?v=RABArnobDTw	23
 20230801			コプター|プログラムチャレンジ|カメラ系|Web系|コンパニオン|自律/ミッション	８・９　CC Webストリーミング→GCSでの人物検知 　我田先生	https://www.youtube.com/watch?v=fUdmmQaDl2E	46
-20230801			コプター|プログラムチャレンジ|障害物回避	７・９　DEMO  ４足歩行ロボット（複数サーボのLUA制御） 藤川先生	https://www.youtube.com/watch?v=e9H2T0UXpwA	89
+20230801			プログラムチャレンジ|ローバー	７・９　DEMO  ４足歩行ロボット（複数サーボのLUA制御） 藤川先生	https://www.youtube.com/watch?v=e9H2T0UXpwA	89
 20230801			プログラムチャレンジ	６・９　DEMO  アルコマーカー追従プログラム航行 渋谷先生	https://www.youtube.com/watch?v=P3rOILP86Ww	47
 20230801			プログラムチャレンジ	６・９　アルコマーカー追従プログラム航行 渋谷先生	https://www.youtube.com/watch?v=bC6i5_Nfivo	56
 20230801	15		コプター|マイクロ機	５・９　DEMO Sub100g Minicopter 土木さん（１５期）	https://www.youtube.com/watch?v=xn8XygjmbCs	29
@@ -385,7 +385,7 @@ upload_date	period	course	tags	title	url	views
 20210412		1	コプター|機体製作(ハード)|Web系|コンパニオン|自律/ミッション	ドローンエンジニア養成塾　講師　我田友史	https://www.youtube.com/watch?v=cydG3x4GohI	108
 20210410			コプター|機体製作(ハード)|プログラムチャレンジ|カメラ系|コンパニオン|マイクロ機|自律/ミッション|RTK/高精度測位|測量/点検	ドローンエンジニア養成塾　2021年度講師座談会	https://www.youtube.com/watch?v=WnqVgqq8O7g	168
 20201119			農業	DJアグリサービス	https://www.youtube.com/watch?v=Mxvuhlgv3Ig	212
-20201101			ローバー|ボート|水中機|プログラムチャレンジ|カメラ系|自律/ミッション|障害物回避	ArduPilot多脚モード！？本邦初公開　by Drone Japan	https://www.youtube.com/watch?v=ak9LE2-SyhA	341
+20201101			ローバー|プログラムチャレンジ|カメラ系|自律/ミッション	ArduPilot多脚モード！？本邦初公開　by Drone Japan	https://www.youtube.com/watch?v=ak9LE2-SyhA	341
 20200919			コプター|機体製作(ハード)|カメラ系|Web系|非GPS|コンパニオン|自律/ミッション|障害物回避|RTK/高精度測位|測量/点検	ドローンエンジニア養成塾 講師座談会　2020・秋冬	https://www.youtube.com/watch?v=HjgopMhh6zg	189
 20200813			コプター|機体製作(ハード)|プログラムチャレンジ|カメラ系|マイクロ機|小型機	ドローンエンジニア養成塾講師　2020年度 藤川さん	https://www.youtube.com/watch?v=UXmhwqrn9rI	103
 20200804	9		機体製作(ハード)	ドローンエンジニア養成塾　２０２０年春夏（９期）池田さんインタビュー	https://www.youtube.com/watch?v=2mjTj_e21-A	27
