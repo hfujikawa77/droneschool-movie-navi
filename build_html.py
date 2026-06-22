@@ -40,6 +40,8 @@ TEMPLATE = """<!DOCTYPE html>
   details.excerpt summary{cursor:pointer;font-size:12px;color:#13406b}
   details.excerpt .body{margin-top:4px;color:#555;font-size:13px;line-height:1.6}
   .nosub{font-size:11px;color:#aaa;margin-top:6px}
+  .filters{margin-top:12px;font-size:14px;color:#444}
+  .filters select{font-size:14px;padding:5px 8px;border:1px solid #ccc;border-radius:6px}
 </style>
 </head>
 <body>
@@ -49,6 +51,9 @@ TEMPLATE = """<!DOCTYPE html>
 </header>
 <div class="wrap">
   <input id="q" placeholder="キーワード検索 (例: 非GPS コプター, ローバー, ラズパイ ...)">
+  <div class="filters">
+    <label>期: <select id="period"></select></label>
+  </div>
   <div class="tags" id="tags"></div>
   <div class="count" id="count"></div>
   <div id="results"></div>
@@ -56,17 +61,24 @@ TEMPLATE = """<!DOCTYPE html>
 <script>
 const DATA = __DATA__;
 const ALL_TAGS = [...new Set(DATA.flatMap(d=>d.tags))];
+const PERIODS = [...new Set(DATA.map(d=>d.period).filter(Boolean))].sort((a,b)=>b-a);
 let active = new Set();
 const qEl=document.getElementById('q'), tagsEl=document.getElementById('tags'),
-      resEl=document.getElementById('results'), cntEl=document.getElementById('count');
+      resEl=document.getElementById('results'), cntEl=document.getElementById('count'),
+      periodEl=document.getElementById('period');
+periodEl.innerHTML='<option value="">すべて</option>'
+  +PERIODS.map(p=>'<option value="'+p+'">第'+p+'期</option>').join('');
+periodEl.onchange=render;
 
 function fmtDate(s){return s&&s.length===8 ? s.slice(0,4)+'-'+s.slice(4,6)+'-'+s.slice(6) : s;}
 function render(){
   const terms=qEl.value.toLowerCase().split(/\\s+/).filter(Boolean);
+  const period=periodEl.value;
   const rows=DATA.filter(d=>{
     const hay=(d.title+' '+d.description+' '+d.tags.join(' ')).toLowerCase();
     if(!terms.every(t=>hay.includes(t))) return false;
     for(const t of active) if(!d.tags.includes(t)) return false;
+    if(period && d.period!==period) return false;
     return true;
   });
   cntEl.textContent=rows.length+' 件';
