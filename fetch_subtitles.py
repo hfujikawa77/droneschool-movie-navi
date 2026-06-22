@@ -44,13 +44,26 @@ def vtt_to_text(vtt: str) -> str:
     return "\n".join(lines)
 
 
+def excluded_ids() -> set[str]:
+    """exclude.txt の対象外動画ID(ドローンワイン/ドローン米プロジェクト等)。"""
+    ids = set()
+    p = HERE / "exclude.txt"
+    if p.exists():
+        for line in p.read_text(encoding="utf-8").splitlines():
+            v = line.split("#", 1)[0].strip()
+            if v:
+                ids.add(v)
+    return ids
+
+
 def main() -> int:
     urls = [u.strip() for u in URLS.read_text(encoding="utf-8").splitlines() if u.strip()]
+    excl = excluded_ids()
     ok = none = skip = 0
     for i, url in enumerate(urls, 1):
         m = RE_VID.search(url)
         vid = m.group(1) if m else url
-        if (OUT / f"{vid}.txt").exists() or (OUT / f"{vid}.none").exists():
+        if vid in excl or (OUT / f"{vid}.txt").exists() or (OUT / f"{vid}.none").exists():
             skip += 1
             continue
         with tempfile.TemporaryDirectory() as td:

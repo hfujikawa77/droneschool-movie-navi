@@ -38,11 +38,24 @@ def done_ids() -> set[str]:
     return ids
 
 
+def excluded_ids() -> set[str]:
+    """exclude.txt の対象外動画ID(ドローンワイン/ドローン米プロジェクト等)。"""
+    ids = set()
+    p = HERE / "exclude.txt"
+    if p.exists():
+        for line in p.read_text(encoding="utf-8").splitlines():
+            vid = line.split("#", 1)[0].strip()
+            if vid:
+                ids.add(vid)
+    return ids
+
+
 def main() -> int:
     urls = [u.strip() for u in URLS.read_text(encoding="utf-8").splitlines() if u.strip()]
     have = done_ids()
-    todo = [u for u in urls if video_id(u) not in have]
-    print(f"total={len(urls)} done={len(have)} todo={len(todo)}", flush=True)
+    skip = excluded_ids()
+    todo = [u for u in urls if video_id(u) not in have and video_id(u) not in skip]
+    print(f"total={len(urls)} done={len(have)} excluded={len(skip)} todo={len(todo)}", flush=True)
 
     ok = fail = 0
     with OUT.open("a", encoding="utf-8") as fh:

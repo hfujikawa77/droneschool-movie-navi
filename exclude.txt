@@ -1,0 +1,33 @@
+# 対象外動画ID(ドローンワイン / ドローン米プロジェクト)。fetch_metadata.py と categorize.py が無視する。
+# 1行1ID。# 始まりはコメント。
+XWsSctiXM3I  # Drone Wine Project KOTO
+kAR64JZJ60k  # Drone Wine Project Daiei
+K2S-xpp7Lko  # ドローン米プロジェクト２０２５
+YpamK4LNPTU  # つじ農園 ドローン米2024
+_7rHfbFA61c  # ドローン米 2024
+gSsPfSBRlDM  # つじ農園  ドローン米2023
+fIauEmOR-eA  # ドローン米2023 勝俣挨拶
+YwisQ9MQ-lk  # 中島農園  ドローン米２０２３
+uDDwq1SSPOM  # DroneJapan ドローンｘ農業のとりくみ
+6f2lFByZlGk  # ドローン米2022　つじ農園
+mipkm4W0v3E  # ドローン米2022 勝俣挨拶
+SW1jZaXhUzw  # ドローンワインプロジェクト
+eZOqC7THNxg  # 中島農園　ドローン米2022
+klj64TC2uMw  # つじ農園　ドローン米2021
+2duR7hWMGvQ  # 田車ドローン After
+h8e39P4DYRo  # 田車ドローン　開発格闘中！？
+otG1DGqXfN4  # 田車ドローン Before
+7jNPdUC8IBE  # ドローン米2021 ご挨拶　ドローン・ジャパン代表 勝俣喜一朗
+IS8kmTB4u9A  # ドローン米２０２０　下村さん（富山県）
+cpGwelxgw_8  # ドローン米２０２０　前田さん（熊本県）
+P7bXnxpo6To  # ドローン米２０２０　本山さん（岡山県）（６月インタビュー ３/３）
+L3WCievyB90  # ドローン米２０２０　本山さん（岡山県）（６月インタビュー ２/３）
+2AkMWnCfoL8  # ドローン米２０２０　本山さん（岡山県）（６月インタビュー １/３）
+h8sto5JEAOI  # ドローン米２０２０　つじさん（三重県）
+ErYFUSb-1jY  # ドローン米２０２０　中島さん（新潟県）
+EgoSFLzul-c  # ドローン米２０２０　本山さん（岡山県）
+9BHsUVTGC2w  # ドローン米２０２０　つじさん　(三重県）
+PI727gyHeF4  # 猪名川甲英ドローン米PJ 20181001
+8nbo6YXXa3E  # 中島さんPV
+e83u-hvCu3c  # 浜野さんPV
+Zk2XMHH0I50  # 三門さんPV
