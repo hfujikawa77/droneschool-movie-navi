@@ -3476,8 +3476,7 @@
     "course": "",
     "tags": [
       "コプター",
-      "機体製作(ハード)",
-      "非GPS"
+      "機体製作(ハード)"
     ],
     "has_transcript": true,
     "description": "https://www.drone-j.com/ades\nhttps://www.drone-j.com/ardupilot",
@@ -5915,7 +5914,6 @@
     "tags": [
       "コプター",
       "機体製作(ハード)",
-      "非GPS",
       "マイクロ機"
     ],
     "has_transcript": true,

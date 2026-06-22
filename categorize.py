@@ -15,6 +15,7 @@ META = HERE / "metadata.jsonl"
 TRANSCRIPTS = HERE / "transcripts"
 TSV = HERE / "catalog.tsv"
 JSON_OUT = HERE / "catalog.json"
+OVERRIDES = HERE / "overrides.json"  # 動画IDごとの手動タグ補正
 
 # タグ名 -> 検索キーワード(小文字・部分一致)。日本語/英語/略称を混在で登録。
 TAG_RULES: dict[str, list[str]] = {
@@ -117,8 +118,31 @@ def tag(title_desc: str, fulltext: str) -> list[str]:
     return hits
 
 
+def load_overrides() -> dict:
+    """手動補正。{ "<videoId>": {"remove": [...], "add": [...]} } 形式。
+
+    キーワード判定では拾えない誤タグ(字幕内の願望・雑談的言及など)を
+    動画単位で除去/追加する。自動判定の後に適用される。
+    """
+    if OVERRIDES.exists():
+        return json.loads(OVERRIDES.read_text(encoding="utf-8"))
+    return {}
+
+
+def apply_overrides(vid: str, tags: list[str], ov: dict) -> list[str]:
+    rule = ov.get(vid)
+    if not rule:
+        return tags
+    out = [t for t in tags if t not in set(rule.get("remove", []))]
+    for t in rule.get("add", []):
+        if t not in out:
+            out.append(t)
+    return out
+
+
 def main() -> None:
     rows = load_meta()
+    overrides = load_overrides()
     catalog = []
     for d in rows:
         vid = d.get("id", "")
@@ -126,6 +150,7 @@ def main() -> None:
         desc = d.get("description") or ""
         tr = transcript_for(vid)
         tags = tag("\n".join([title, desc]), "\n".join([title, desc, tr]))
+        tags = apply_overrides(vid, tags, overrides)
 
         period = RE_PERIOD.search(title) or RE_PERIOD.search(desc)
         course = RE_COURse.search(title) or RE_COURse.search(desc)
