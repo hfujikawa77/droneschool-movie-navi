@@ -72,7 +72,7 @@ TEMPLATE = """<!DOCTYPE html>
     <div id="panel" class="collapsed">
       <div class="filters">
         <label>期: <select id="period"></select></label>
-        <label class="chk"><input type="checkbox" id="talk"> ウェビナー/インタビュー/座談会/MVP/メッセージ も含める</label>
+        <label class="chk"><input type="checkbox" id="talk"> ウェビナー/インタビュー/座談会/MVP/メッセージ/めざせ も含める</label>
       </div>
       <div class="tags" id="tags"></div>
     </div>

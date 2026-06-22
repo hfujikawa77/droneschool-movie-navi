@@ -6,5 +6,13 @@
   "sUtqYxkKyJ4": {
     "remove": ["非GPS"],
     "_note": "字幕の『本当はオプティカルフローをつけたい』という願望を拾った誤タグ"
+  },
+  "bjRtgYPtSqg": {
+    "remove": ["非GPS"],
+    "_note": "本文に nonGPS の語があるが非GPSチャレンジではない(DIY3 鈴木 1/2)"
+  },
+  "VqgObGtAa4M": {
+    "remove": ["非GPS"],
+    "_note": "本文に nonGPS の語があるが非GPSチャレンジではない(DIY3 鈴木 2/2)"
   }
 }

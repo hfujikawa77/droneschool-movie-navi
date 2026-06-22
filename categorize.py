@@ -51,10 +51,10 @@ TAG_RULES: dict[str, list[str]] = {
     "Web系": ["web", "ウェブ", "サーバ", "server", "ブラウザ", "html", "api",
             "クラウド", "cloud", "ダッシュボード", "node", "javascript",
             "django", "flask"],
+    # マーカー(ArUco/AprilTag)追従はGPS下でも行うため非GPSの判定語にしない
     "非GPS": ["非gps", "non-gps", "nongps", "gpsなし", "gps無し", "gpsレス",
             "屋内", "indoor", "slam", "optical flow", "オプティカルフロー",
-            "visual odometry", "vio", "t265", "marker", "マーカー", "april",
-            "ビーコン", "uwb"],
+            "visual odometry", "vio", "t265", "ビーコン", "uwb"],
     "コンパニオン": ["コンパニオン", "companion", "raspberry", "ラズパイ", "ラズベリー",
               "jetson", "ジェットソン", "rpi", "nvidia", "ros", "ros2",
               "オンボード", "linux"],
@@ -127,7 +127,8 @@ def transcript_for(vid: str) -> str:
 RE_URL = re.compile(r"https?://\S+")
 
 # 実機チャレンジではない「トーク系」動画(既定で検索から除外)
-TALK_MARKERS = ["ウェビナー", "webinar", "zoom", "インタビュー", "座談会", "mvp", "メッセージ"]
+TALK_MARKERS = ["ウェビナー", "webinar", "zoom", "インタビュー", "座談会", "mvp",
+                "メッセージ", "めざせ"]  # 「めざせ!ドローンエンジニアチャンネル」も省略対象
 
 
 def is_talk(title: str) -> bool:
