@@ -184,7 +184,7 @@ upload_date	period	course	tags	title	url	views
 20250808	14			第１４期　Flight Experience  ５・小笠原の外来トカゲ駆除装置！？　レインボー野口さん	https://www.youtube.com/watch?v=kp1dqwJGkGc	19
 20250808	14		ローバー|コンパニオン|自律/ミッション	第１４期　Flight Experience  ６・自律ローバーに向けて鋭意奮闘中！　四栁さん	https://www.youtube.com/watch?v=iWXJwQiKefQ	6
 20250808	14		ローバー|プログラムチャレンジ	第１４期　Flight Experience  ７・DIYクローラにフライトモードにあわせた音楽！？（Pythonプログラミング 目視外でのフライト状況お知らせ機能を目指して）大島さん＆伊藤さん１/2	https://www.youtube.com/watch?v=7m_BHexdseE	14
-20250808	14		コプター|機体製作(ハード)|非GPS	第１４期　Flight Experience  8・DIYコプター完成！渡邉さん1/2	https://www.youtube.com/watch?v=QKhcwvHe8vY	6
+20250808	14		コプター|機体製作(ハード)	第１４期　Flight Experience  8・DIYコプター完成！渡邉さん1/2	https://www.youtube.com/watch?v=QKhcwvHe8vY	6
 20250808	14			第１４期　Flight Experience  9・オリジナルフライトモード(YAW右90° 左90°）開発＆デモ！　渡邊さん 1/2	https://www.youtube.com/watch?v=x05y_lVW8v8	6
 20250808	14			第１４期　Flight Experience  9・オリジナルフライトモード(YAW右90° 左90°）開発＆デモ！　渡邊さん 2/2	https://www.youtube.com/watch?v=FxeFlyZ037w	17
 20250808	14			第１４期　Flight Experience  10・オリジナルフライトモード(ピッチ手前１０°）開発＆デモ！　晝間さん2/2	https://www.youtube.com/watch?v=q8pRe-su_7c	8
@@ -312,7 +312,7 @@ upload_date	period	course	tags	title	url	views
 20230801			プログラムチャレンジ|非GPS	６・９　DEMO  アルコマーカー追従プログラム航行 渋谷先生	https://www.youtube.com/watch?v=P3rOILP86Ww	47
 20230801			プログラムチャレンジ|非GPS	６・９　アルコマーカー追従プログラム航行 渋谷先生	https://www.youtube.com/watch?v=bC6i5_Nfivo	56
 20230801	15		コプター	５・９　DEMO Sub100g Minicopter 土木さん（１５期）	https://www.youtube.com/watch?v=xn8XygjmbCs	29
-20230801	15		コプター|機体製作(ハード)|非GPS|マイクロ機	５・９　Sub100g Minicopter 土木さん（１５期）	https://www.youtube.com/watch?v=sUtqYxkKyJ4	25
+20230801	15		コプター|機体製作(ハード)|マイクロ機	５・９　Sub100g Minicopter 土木さん（１５期）	https://www.youtube.com/watch?v=sUtqYxkKyJ4	25
 20230801	10		ヘリ|自律/ミッション	４・９　DEMO　ArduPilotシングルヘリ 初披露 奥野さん（１０期）	https://www.youtube.com/watch?v=LoNzufUeMD4	550
 20230801	10		ヘリ	４・９　前座DEMO？　ArduPilotシングルヘリ 初披露 奥野さん（１０期）	https://www.youtube.com/watch?v=pjaw_e-FDl8	104
 20230801	11		プログラムチャレンジ	３・９　DEMO  操縦＆テレメ統合プロポ　TKKWorks山崎さん　（１１期）	https://www.youtube.com/watch?v=RSdJzIakZsM	139
