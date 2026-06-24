@@ -312,8 +312,8 @@
     "period": "10",
     "course": "",
     "tags": [
-      "コプター",
-      "障害物回避"
+      "障害物回避",
+      "ローバー"
     ],
     "has_transcript": true,
     "description": "",
@@ -331,11 +331,11 @@
     "period": "10",
     "course": "",
     "tags": [
-      "コプター",
       "機体製作(ハード)",
       "プログラムチャレンジ",
       "自律/ミッション",
-      "測量/点検"
+      "測量/点検",
+      "ローバー"
     ],
     "has_transcript": true,
     "description": "",
@@ -354,7 +354,8 @@
     "course": "",
     "tags": [
       "プログラムチャレンジ",
-      "自律/ミッション"
+      "自律/ミッション",
+      "コプター"
     ],
     "has_transcript": true,
     "description": "",
