@@ -4,3 +4,8 @@ __pycache__/
 *.log
 # 字幕なしマーカー(再実行用の状態ファイル・再生成可能)
 transcripts/*.none
+# 画像入り要約の作業用(再生成可能・大容量): DL動画・抽出フレーム・サムネ
+.videos/
+frames/
+thumbnails/
+picks/
