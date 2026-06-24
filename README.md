@@ -52,6 +52,17 @@
 { "<videoId>": { "remove": ["非GPS"], "add": ["コプター"], "talk": true } }
 ```
 
+### AI要約 (`summaries.json`)
+タイトル・説明文・字幕(将来的には画像特徴も)を踏まえたAI要約を動画ID単位で保持する。
+`categorize.py` がここから読み込み `catalog.json` の `summary` 欄に反映する(直接編集すると
+再生成で消えるため、要約はこのファイルに書く)。`index.html`/`search.py` は `summary` があれば
+説明文より優先して表示する。
+```json
+{ "<videoId>": "AI要約テキスト" }
+```
+現状は字幕取得・ネットアクセス可能な環境でのみ手動/半自動生成(一部動画のみ試行中)。
+サムネイル等の画像特徴を使った要約は、YouTubeへのネットアクセスが必要なため別環境で行う想定。
+
 ### 対象外 (`exclude.txt`)
 ドローンワイン/ドローン米プロジェクト等の対象外動画ID(1行1ID、`#`コメント可)。
 `fetch_metadata.py` / `fetch_subtitles.py` / `categorize.py` が無視する。
@@ -79,6 +90,7 @@ python3 build_html.py            # -> index.html
 | `metadata.jsonl` | 各動画メタデータ |
 | `exclude.txt` | 対象外動画ID(31件) |
 | `overrides.json` | 手動タグ補正・talk上書き |
+| `summaries.json` | 動画IDごとのAI要約(字幕+説明+将来は画像特徴) |
 | `catalog.json` / `catalog.tsv` | タグ付きカタログ(検索の元データ) |
 | `index.html` | 塾生向け検索ページ(自己完結) |
 | `assets/` | ロゴ等 |
