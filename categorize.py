@@ -16,6 +16,7 @@ TRANSCRIPTS = HERE / "transcripts"
 TSV = HERE / "catalog.tsv"
 JSON_OUT = HERE / "catalog.json"
 OVERRIDES = HERE / "overrides.json"  # 動画IDごとの手動タグ補正
+SUMMARIES = HERE / "summaries.json"  # 動画IDごとのAI要約(字幕+説明+(画像特徴))
 
 # タグ名 -> 検索キーワード(小文字・部分一致)。日本語/英語/略称を混在で登録。
 TAG_RULES: dict[str, list[str]] = {
@@ -210,6 +211,17 @@ def default_copter(title: str, tags: list[str], fulltext: str) -> list[str]:
     return tags
 
 
+def load_summaries() -> dict:
+    """動画IDごとのAI要約。{ "<videoId>": "要約テキスト" } 形式。
+
+    字幕+説明文(+画像特徴)を踏まえて生成したAI要約を保持する別ファイル。
+    categorize.py 再実行で消えないよう catalog.json には直接書かず、こちらに保存する。
+    """
+    if SUMMARIES.exists():
+        return json.loads(SUMMARIES.read_text(encoding="utf-8"))
+    return {}
+
+
 def load_overrides() -> dict:
     """手動補正。{ "<videoId>": {"remove": [...], "add": [...], "talk": true|false} } 形式。
 
@@ -236,6 +248,7 @@ def apply_overrides(vid: str, tags: list[str], ov: dict) -> list[str]:
 def main() -> None:
     rows = load_meta()
     overrides = load_overrides()
+    summaries = load_summaries()
     catalog = []
     for d in rows:
         vid = d.get("id", "")
@@ -267,7 +280,7 @@ def main() -> None:
             "transcript_excerpt": excerpt(tr),
             # トーク系(ウェビナー/インタビュー等)= 既定で検索除外。overridesで手動上書き可
             "talk": overrides.get(vid, {}).get("talk", is_talk(title, desc)),
-            "summary": "",  # 後でAI要約を入れる枠
+            "summary": summaries.get(vid, ""),  # AI要約(summaries.json)
         })
 
     catalog.sort(key=lambda r: r["upload_date"], reverse=True)
@@ -284,7 +297,8 @@ def main() -> None:
     # 集計
     from collections import Counter
     c = Counter(t for r in catalog for t in r["tags"])
-    print(f"videos={len(catalog)}  with_transcript={sum(r['has_transcript'] for r in catalog)}")
+    print(f"videos={len(catalog)}  with_transcript={sum(r['has_transcript'] for r in catalog)}"
+          f"  with_summary={sum(bool(r['summary']) for r in catalog)}")
     print("tag counts:")
     for name in TAG_RULES:
         print(f"  {name:18} {c.get(name,0)}")
